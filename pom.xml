@@ -167,7 +167,7 @@
                         <version>2.5</version>
                         <configuration>
                             <outputDirectory>webapps</outputDirectory>
-                            <warName>aemetproxy</warName>
+                            <warName>AemetProxy</warName>
                         </configuration>
                     </plugin>
                 </plugins>
