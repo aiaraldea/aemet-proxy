@@ -45,3 +45,10 @@
     color: #CCCC00;
     padding-top: 0;
 }
+.aemet-copy a {
+    color: gray;
+    font-size: 70%;
+    font-variant: small-caps;
+    text-decoration: none;
+    font-family: sans-serif;
+}
