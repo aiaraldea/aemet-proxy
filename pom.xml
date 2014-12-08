@@ -160,7 +160,7 @@
         <profile>
             <id>openshift</id>
             <build>
-                <finalName>aemetproxy</finalName>
+                <finalName>AemetProxy</finalName>
                 <plugins>
                     <plugin>
                         <artifactId>maven-war-plugin</artifactId>
