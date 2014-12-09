@@ -7,8 +7,8 @@ package com.aiaraldea.aemetproxy.web;
 
 import com.aiaraldea.aemetproxy.InfoAemet;
 import com.aiaraldea.aemetproxy.model.PrediccionesAemet;
-import com.aiaraldea.aemetproxy.model.SimpleForecast;
-import com.aiaraldea.aemetproxy.model.SimpleForecastBuilder;
+import com.aiaraldea.aemetproxy.dto.SimpleForecast;
+import com.aiaraldea.aemetproxy.dto.SimpleForecastBuilder;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -45,9 +45,20 @@ public class EguraldiaResource {
      * @return an instance of java.lang.String
      */
     @GET
-    @Produces("application/xml")
-    @Path("{param}")
+    @Produces("application/json")
+    @Path("{param}.json")
     public PrediccionesAemet getJson(@PathParam("param") int code) {
+        return getFull(code);
+    }
+
+    @GET
+    @Produces("application/xml")
+    @Path("{param}.xml")
+    public PrediccionesAemet getXml(@PathParam("param") int code) {
+        return getFull(code);
+    }
+
+    private PrediccionesAemet getFull(int code) {
         String stringCode = Integer.toString(code);
         PrediccionesAemet predicciones = (PrediccionesAemet) servletContext.getAttribute(stringCode);
         if (predicciones == null || predicciones.isOld()) {

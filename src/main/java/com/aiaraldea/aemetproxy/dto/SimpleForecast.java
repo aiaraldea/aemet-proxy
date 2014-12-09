@@ -1,4 +1,4 @@
-package com.aiaraldea.aemetproxy.model;
+package com.aiaraldea.aemetproxy.dto;
 
 import com.aiaraldea.aemetproxy.BasqueSimpleDateFormat;
 import java.beans.Transient;

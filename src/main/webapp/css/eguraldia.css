@@ -1,3 +1,6 @@
+.aemet-widget {
+    margin: 0;
+}
 .aemet-eguraldia {
     font-size: 12px;
     font-family: sans-serif;
@@ -44,4 +47,11 @@
 .aemet-eguraldia .wind .wi {
     color: #CCCC00;
     padding-top: 0;
+}
+.aemet-copy a {
+    color: gray;
+    font-size: 70%;
+    font-variant: small-caps;
+    text-decoration: none;
+    font-family: sans-serif;
 }

@@ -37,7 +37,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.wi-13:before {
+.wi-13:before, .wi-14:before {
     content: "\f002";
 }
 .wi-23:before, .wi-23n:before, .wi-24:before, .wi-24n:before, .wi-day-rain:before {
@@ -49,7 +49,7 @@
 .wi-71:before,.wi-72:before, .wi-33:before,.wi-34:before, .wi-day-snow:before {
     content: "\f00a";
 }
-.wi-12:before {
+.wi-12:before, .wi-17:before {
     content: "\f00c";
 }
 .wi-11:before {
@@ -61,10 +61,10 @@
 .wi-51:before,.wi-52:before, .wi-day-thunderstorm:before {
     content: "\f010";
 }
-.wi-15:before {
+.wi-15:before, .wi-16:before {
     content: "\f013";
 }
-.wi-25:before {
+.wi-25:before, .wi-26:before {
     content: "\f019";
 }
 .wi-45:before, .wi-45n:before, .wi-46:before, .wi-46n:before, .wi-showers:before {
@@ -102,4 +102,7 @@
 }
 .wi-wind-E:before {
     content: "\f061";
+}
+.wi-wind-C:before {
+    content: "-";
 }
