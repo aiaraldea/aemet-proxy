@@ -1,6 +1,12 @@
 .aemet-widget {
+    font-family: sans-serif;
     margin: 0;
+    width: 300px;
 }
+.aemet-widget > .town-chooser {
+    float: right;
+}
+
 .aemet-eguraldia {
     font-size: 12px;
     font-family: sans-serif;
@@ -53,5 +59,35 @@
     font-size: 70%;
     font-variant: small-caps;
     text-decoration: none;
+}
+
+
+.town-chooser-selector {
+ font-size: 70%;   
+    color: #2D3C01;
+    padding: 3px;
+    cursor: pointer;
+    background-color: #CCCC00;
+}
+ul.town-chooser-list {
+    width: 300px;
+    position:absolute; 
+    top:0; 
+    left:0;
+    display: none;
+    background-color: white;
+    opacity: .9;
+    margin: 0;
+    padding: 0;
+    column-count: 2;
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2;
     font-family: sans-serif;
+}
+ul.town-chooser-list li{
+    padding: 3px;
+    margin: 1px 5px 5px 5px;
+    cursor: pointer;
+    background-color: #CCCC00;
+    color: #2D3C01;
 }

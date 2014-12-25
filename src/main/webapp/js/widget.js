@@ -86,25 +86,38 @@ aemetProxy.period2 = function (element, period, time) {
           '</div>');
 
 };
-aemetProxy.init = function () {
-  $('.aemet-eguraldia').each(function (i) {
-    var container = $(this);
-    var code = container.data('aemet-code');
-    $.get("/AemetProxy/webresources/eguraldia/sinple/"+code+".json", function (data) {
-      aemetProxy.initData(data, container);
-    });
-    console.log(code);
+//aemetProxy.init = function () {
+//  $('.aemet-eguraldia').each(function (i) {
+//    var code;
+//    var container = $(this);
+//    var cookie = readCookie("eguraldia.herria");
+//    console.log(cookie);
+//    if (cookie != null)
+//      code = cookie;
+//    else
+//      code = container.data('aemet-code');
+//    $.get("/AemetProxy/webresources/eguraldia/sinple/" + code + ".json", function (data) {
+//      aemetProxy.initData(data, container);
+//    });
+//  });
+//};
+
+aemetProxy.reload = function (container, code) {
+  $.get("/AemetProxy/webresources/eguraldia/sinple/" + code + ".json", function (data) {
+    aemetProxy.initData(data, container);
   });
 };
+
 aemetProxy.initData = function (data, container) {
-    $.each(data.days.day, function (k, v) {
-      if (k > 2) {
-        return;
-      }
-      console.log(v);
-      aemetProxy.day(container, v);
-    });
+  container.empty();
+  $.each(data.days.day, function (k, v) {
+    if (k > 2) {
+      return;
+    }
+    console.log(v);
+    aemetProxy.day(container, v);
+  });
 };
-$(document).ready(function () {
-  aemetProxy.init();
-});
+//$(document).ready(function () {
+//  aemetProxy.init();
+//});
