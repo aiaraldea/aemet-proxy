@@ -63,7 +63,7 @@
 
 
 .town-chooser-selector {
- font-size: 70%;   
+    font-size: 70%;   
     color: #2D3C01;
     padding: 3px;
     cursor: pointer;
@@ -80,9 +80,9 @@ ul.town-chooser-list {
     margin: 0;
     padding: 0;
     column-count: 2;
-    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -webkit-column-count: 2;
     -moz-column-count: 2;
-    font-family: sans-serif;
+    list-style-type: none;
 }
 ul.town-chooser-list li{
     padding: 3px;
