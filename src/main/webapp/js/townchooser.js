@@ -56,7 +56,6 @@ aemetProxy.townChooser = (function ($, aemetProxy) {
       if (cookie != null) {
         select(cookie);
       }
-      console.log(herria);
 
       aemetProxy.reload(eguraldiaContainer, herria.code);
       container.find('.town-chooser-selected').text(herria.name);
@@ -66,11 +65,10 @@ aemetProxy.townChooser = (function ($, aemetProxy) {
       });
       $('ul.town-chooser-list li').click(function () {
         container.parent().find('ul').first().toggle();
-        aemetProxy.reload(eguraldiaContainer, herria.code);
         select($(this).attr('data-code'));
+        aemetProxy.reload(eguraldiaContainer, herria.code);
         container.find('.town-chooser-selected').text(herria.name);
         document.cookie = "eguraldia.herria=" + herria.code;
-        console.log(herria);
       });
     });
   };
