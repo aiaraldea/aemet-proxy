@@ -34,8 +34,8 @@ aemetProxy.period2 = function (element, period, time) {
           '</div>');
 
 };
-aemetProxy.init = function () {
-  $('.aemet-eguraldia').each(function (i) {
+aemetProxy.auto = function () {
+  $('.aemet-eguraldia-auto').each(function (i) {
     var code;
     var container = $(this);
     var cookie = readCookie("eguraldia.herria");
@@ -64,6 +64,6 @@ aemetProxy.initData = function (data, container) {
     aemetProxy.day(container, v);
   });
 };
-//$(document).ready(function () {
-//  aemetProxy.init();
-//});
+$(document).ready(function () {
+  aemetProxy.auto();
+});
