@@ -68,7 +68,7 @@ aemetProxy.townChooser = (function ($, aemetProxy) {
         select($(this).attr('data-code'));
         aemetProxy.reload(eguraldiaContainer, herria.code);
         container.find('.town-chooser-selected').text(herria.name);
-        document.cookie = "eguraldia.herria=" + herria.code;
+        document.cookie = "eguraldia.herria=" + herria.code + ";max-age=" + 60*60*24*30 + ";";
       });
     });
   };
