@@ -30,7 +30,7 @@ aemetProxy.townChooser = (function ($, aemetProxy) {
     return chooser;
   })(herriak);
   var selector = $("\n\
-<div class='town-chooser-selector'><span class='label'>Herria: </span><span class='town-chooser-selected'>" + herria.name + "</span></div>");
+<div class='town-chooser-selector'><span class='label'>Hautatu herria: </span><span class='town-chooser-selected'>" + herria.name + "</span></div>");
 
   var init = function () {
 
