@@ -25,6 +25,7 @@ public class SimpleForecast {
     private String town;
     private List<Day> days;
     private final DateTime date = DateTime.now();
+    private String link;
 
     /**
      * @return the provincia
@@ -52,6 +53,14 @@ public class SimpleForecast {
      */
     public void setTown(String town) {
         this.town = town;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link.replace("/es/", "/eu/");
     }
 
     /**
@@ -152,6 +161,7 @@ public class SimpleForecast {
         public void setDay(String day) {
 //            this.day = day;
         }
+
         public void setDay(Date day) {
             this.day = day;
         }

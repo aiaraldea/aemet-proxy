@@ -46,6 +46,7 @@ public class InfoAemet {
         List<PrediccionAemet> predicciones = new ArrayList<>();
         String provincia = null;
         String localidad = null;
+        String enlace = null;
         String xml = leerXML(aemetCode);
         XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
         factory.setNamespaceAware(true);
@@ -56,12 +57,13 @@ public class InfoAemet {
             PrediccionAemet ret = null;
             if (eventType == XmlPullParser.START_TAG) {
                 if (provincia == null) {
-                    provincia = getTagValue(xpp,
-                            AemetLocalidadTags.tag_provincia);
+                    provincia = getTagValue(xpp, AemetLocalidadTags.tag_provincia);
                 }
                 if (localidad == null) {
-                    localidad = getTagValue(xpp,
-                            AemetLocalidadTags.tag_nombre);
+                    localidad = getTagValue(xpp, AemetLocalidadTags.tag_nombre);
+                }
+                if (enlace == null) {
+                    enlace = getTagValue(xpp, AemetLocalidadTags.tag_enlace);
                 }
                 while (isDia(xpp)) {
                     ret = leerPrediccion(xpp);
@@ -72,6 +74,7 @@ public class InfoAemet {
 //                    ret.setDia(fecha);
                 ret.setLocalidad(localidad);
                 ret.setProvincia(provincia);
+                ret.setEnlace(enlace);
                 predicciones.add(ret);
             }
         } while (eventType != XmlPullParser.END_DOCUMENT);
@@ -83,8 +86,7 @@ public class InfoAemet {
             throws XmlPullParserException, IOException {
         String ret = null;
         if (xpp != null && pTag != null) {
-            AemetLocalidadTags actualTag = AemetLocalidadTags
-                    .get(xpp.getName());
+            AemetLocalidadTags actualTag = AemetLocalidadTags.get(xpp.getName());
             if (pTag.equals(actualTag)) {
                 xpp.next();
                 ret = xpp.getText();

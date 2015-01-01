@@ -35,14 +35,10 @@ aemetProxy.period2 = function (element, period, time) {
 
 };
 aemetProxy.auto = function () {
-  $('.aemet-eguraldia-auto').each(function (i) {
+  $('.aemet-eguraldia.auto').each(function (i) {
     var code;
     var container = $(this);
-    var cookie = readCookie("eguraldia.herria");
-    if (cookie != null)
-      code = cookie;
-    else
-      code = container.data('aemet-code');
+    code = container.data('aemet-code');
     $.get("/AemetProxy/webresources/eguraldia/sinple/" + code + ".json", function (data) {
       aemetProxy.initData(data, container);
     });
@@ -63,6 +59,7 @@ aemetProxy.initData = function (data, container) {
     }
     aemetProxy.day(container, v);
   });
+  container.append('<div style="clear: both;" class="aemet-copy"><a href="' + data.link + '" target="_blank">&copy; AEMET</a></div>');
 };
 $(document).ready(function () {
   aemetProxy.auto();

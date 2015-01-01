@@ -54,6 +54,10 @@
     color: #CCCC00;
     padding-top: 0;
 }
+.aemet-copy {
+    clear: both;
+    text-align: right;    
+}
 .aemet-copy a {
     color: gray;
     font-size: 70%;
@@ -61,13 +65,14 @@
     text-decoration: none;
 }
 
-
 .town-chooser-selector {
     font-size: 70%;   
     color: #2D3C01;
     padding: 3px;
     cursor: pointer;
     background-color: #CCCC00;
+    width: 60%;
+    margin-top: -1.4em;
 }
 ul.town-chooser-list {
     width: 300px;

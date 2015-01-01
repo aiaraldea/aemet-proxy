@@ -10,6 +10,7 @@ public class PrediccionAemet {
 
     private String provincia;
     private String localidad;
+    private String enlace;
     private String prediccion;
     private Date dia;
     private Map<AemetPeriodo, Integer> probPrecipitacion;
@@ -49,6 +50,14 @@ public class PrediccionAemet {
      */
     public void setProvincia(String provincia) {
         this.provincia = provincia;
+    }
+
+    public String getEnlace() {
+        return enlace;
+    }
+
+    public void setEnlace(String enlace) {
+        this.enlace = enlace;
     }
 
     /**

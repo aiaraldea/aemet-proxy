@@ -26,6 +26,7 @@ public class SimpleForecastBuilder {
             day.setMinTemperature(prediccion.getMinTemperatura());
             forecast.setTown(prediccion.getLocalidad());
             forecast.setProvince(prediccion.getProvincia());
+            forecast.setLink(prediccion.getEnlace());
             SimpleForecast.Period morning = new SimpleForecast.Period();
             SimpleForecast.Period afternoon = new SimpleForecast.Period();
             for (AemetEstadoCielo estadoCielo : prediccion.getEstadoCielo()) {

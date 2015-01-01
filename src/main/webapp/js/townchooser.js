@@ -29,8 +29,8 @@ aemetProxy.townChooser = (function ($, aemetProxy) {
     chooser += "</ul>";
     return chooser;
   })(herriak);
-  var selector = "\n\
-<div class='town-chooser-selector'><span class='label'>Herria: </span><span class='town-chooser-selected'>" + herria.name + "</span></div>";
+  var selector = $("\n\
+<div class='town-chooser-selector'><span class='label'>Herria: </span><span class='town-chooser-selected'>" + herria.name + "</span></div>");
 
   var init = function () {
 
@@ -46,21 +46,23 @@ aemetProxy.townChooser = (function ($, aemetProxy) {
       }
       return null;
     }
-    $('.aemet-widget >.town-chooser').each(function (i) {
+
+    $('.aemet-widget > .aemet-eguraldia-aiaraldea').each(function (i) {
       var container = $(this);
-      var eguraldiaContainer = container.siblings('.aemet-eguraldia');
+      var eguraldiaContainer = $('<div class="aemet-eguraldia"></div>').appendTo(container);
+      var cookie = readCookie("eguraldia.herria");
+      if (cookie !== null) {
+        select(cookie);
+      }
+      aemetProxy.reload(eguraldiaContainer, herria.code);
       container.append(selector);
       $(container.parent().append(chooser));
 
-      var cookie = readCookie("eguraldia.herria");
-      if (cookie != null) {
-        select(cookie);
-      }
 
       aemetProxy.reload(eguraldiaContainer, herria.code);
       container.find('.town-chooser-selected').text(herria.name);
 
-      container.click(function () {
+      selector.click(function () {
         container.parent().find('ul').first().toggle();
       });
       $('ul.town-chooser-list li').click(function () {
@@ -68,7 +70,7 @@ aemetProxy.townChooser = (function ($, aemetProxy) {
         select($(this).attr('data-code'));
         aemetProxy.reload(eguraldiaContainer, herria.code);
         container.find('.town-chooser-selected').text(herria.name);
-        document.cookie = "eguraldia.herria=" + herria.code + ";max-age=" + 60*60*24*30 + ";";
+        document.cookie = "eguraldia.herria=" + herria.code + ";max-age=" + 60 * 60 * 24 * 360 * 3 + ";";
       });
     });
   };

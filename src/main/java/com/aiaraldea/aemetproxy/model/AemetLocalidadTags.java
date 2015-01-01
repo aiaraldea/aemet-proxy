@@ -6,6 +6,7 @@ public enum AemetLocalidadTags {
 
 	tag_root,
 	tag_nombre,
+        tag_enlace,
 	tag_provincia,
 	tag_prediccion,
 	tag_dia,
