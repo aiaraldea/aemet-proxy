@@ -6,6 +6,8 @@
 package com.aiaraldea.aemetproxy.web;
 
 import com.aiaraldea.aemetproxy.InfoAemet;
+import com.aiaraldea.aemetproxy.dto.FullForecast;
+import com.aiaraldea.aemetproxy.dto.FullForecastBuilder;
 import com.aiaraldea.aemetproxy.model.PrediccionesAemet;
 import com.aiaraldea.aemetproxy.dto.SimpleForecast;
 import com.aiaraldea.aemetproxy.dto.SimpleForecastBuilder;
@@ -49,23 +51,23 @@ public class EguraldiaResource {
     @GET
     @Produces("application/json")
     @Path("{param}.json")
-    public PrediccionesAemet getJson(@PathParam("param") int code) {
+    public FullForecast getJson(@PathParam("param") int code) {
         return getFull(code);
     }
 
     @GET
     @Produces("application/xml")
     @Path("{param}.xml")
-    public PrediccionesAemet getXml(@PathParam("param") int code) {
+    public FullForecast getXml(@PathParam("param") int code) {
         return getFull(code);
     }
 
-    private PrediccionesAemet getFull(int code) {
+    private FullForecast getFull(int code) {
         String stringCode = Integer.toString(code);
-        PrediccionesAemet predicciones = (PrediccionesAemet) servletContext.getAttribute(stringCode);
+        FullForecast predicciones = (FullForecast) servletContext.getAttribute(stringCode);
         if (predicciones == null || predicciones.isOld()) {
             try {
-                predicciones = InfoAemet.getPrediccion(code);
+                predicciones = FullForecastBuilder.build(InfoAemet.getPrediccion(code));
             } catch (XmlPullParserException | IOException | ParseException ex) {
                 Logger.getLogger(EguraldiaResource.class.getName()).log(Level.SEVERE, null, ex);
             }

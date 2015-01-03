@@ -138,8 +138,7 @@ public class FullForecast {
         private Date day;
         private int minTemperature;
         private int maxTemperature;
-        private Period morning;
-        private Period afternoon;
+        private List<Period> periods;
 
         /**
          * @return the day
@@ -152,6 +151,7 @@ public class FullForecast {
         public void setDay(String day) {
 //            this.day = day;
         }
+
         public void setDay(Date day) {
             this.day = day;
         }
@@ -186,21 +186,16 @@ public class FullForecast {
             this.maxTemperature = maxTemperature;
         }
 
-        public Period getMorning() {
-            return morning;
+        @XmlElementWrapper(name = "periods")
+        @XmlElement(name = "period")
+        public List<Period> getPeriods() {
+            return periods;
         }
 
-        public void setMorning(Period morning) {
-            this.morning = morning;
+        public void setPeriods(List<Period> periods) {
+            this.periods = periods;
         }
 
-        public Period getAfternoon() {
-            return afternoon;
-        }
-
-        public void setAfternoon(Period afternoon) {
-            this.afternoon = afternoon;
-        }
     }
 
     public static class SimpleWind {

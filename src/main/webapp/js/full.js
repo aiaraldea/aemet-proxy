@@ -7,19 +7,18 @@ aemetProxy.full = (function () {
     }
     var element = $('<div class="aemet-day ' + full + '"></div>').appendTo(container);
     element.append('<div class="eguna">' + day.day + '</div>');
-    if (day.morning) {
-      period1(element, day.morning, '00-12');
-    }
-    period1(element, day.afternoon, '12-24');
+
+    $.each(day.periods.period, function (i, p) {
+      period1(element, p, '12-24');
+    });
     element.append(
             '<div class="temp"><span class="min">' + day.minTemperature + '</span> / <span class="max">' + day.maxTemperature + '</span></div>');
-    if (day.morning) {
-      period2(element, day.morning, '00-12');
-    }
-    period2(element, day.afternoon, '12-24');
+    $.each(day.periods.period, function (i, p) {
+      period2(element, p, '12-24');
+    });
   };
   var period1 = function (element, period, time) {
-    console.log(period);  
+    console.log(period);
     element.append('<div class="aemet-period">' +
             '<div class="ordua">' + time + '</div>' +
             '<i class="wi wi-' + period.skyStatusCode + '"></i>' +
@@ -35,9 +34,6 @@ aemetProxy.full = (function () {
 
   var initData = function (data, container) {
     $.each(data.days.day, function (k, v) {
-      if (k > 2) {
-        return;
-      }
       console.log(v);
       day(container, v);
     });

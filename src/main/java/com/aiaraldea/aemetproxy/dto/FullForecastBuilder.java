@@ -5,9 +5,10 @@ import com.aiaraldea.aemetproxy.model.AemetPeriodo;
 import com.aiaraldea.aemetproxy.model.AemetViento;
 import com.aiaraldea.aemetproxy.model.PrediccionAemet;
 import com.aiaraldea.aemetproxy.model.PrediccionesAemet;
-import com.aiaraldea.aemetproxy.dto.SimpleForecast.Day;
+import com.aiaraldea.aemetproxy.dto.FullForecast.Day;
 import com.aiaraldea.aemetproxy.model.AemetPeriodo.DetailLevel;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,9 +18,9 @@ import java.util.Map;
  */
 public class FullForecastBuilder {
 
-    public static SimpleForecast build(PrediccionesAemet predicciones) {
-        SimpleForecast forecast = new SimpleForecast();
-        List<SimpleForecast.Day> days = new ArrayList<>();
+    public static FullForecast build(PrediccionesAemet predicciones) {
+        FullForecast forecast = new FullForecast();
+        List<FullForecast.Day> days = new ArrayList<>();
         for (PrediccionAemet prediccion : predicciones.getPrediccionesAemet()) {
             DetailLevel level = level(prediccion);
             Day day = new Day();
@@ -28,38 +29,28 @@ public class FullForecastBuilder {
             day.setMinTemperature(prediccion.getMinTemperatura());
             forecast.setTown(prediccion.getLocalidad());
             forecast.setProvince(prediccion.getProvincia());
-            SimpleForecast.Period morning = new SimpleForecast.Period();
-            SimpleForecast.Period afternoon = new SimpleForecast.Period();
+            Map<AemetPeriodo, FullForecast.Period> periods = new HashMap<>();
             for (AemetEstadoCielo estadoCielo : prediccion.getEstadoCielo()) {
-                if (estadoCielo.getPeriodo() == AemetPeriodo.p0012) {
-                    morning.setSkyStatusCode((estadoCielo.getCode()));
-                } else if (estadoCielo.getPeriodo() == AemetPeriodo.p1224) {
-                    afternoon.setSkyStatusCode((estadoCielo.getCode()));
+                if (estadoCielo.getPeriodo().level() == level) {
+                    periods.put(estadoCielo.getPeriodo(), new FullForecast.Period());
+                    periods.get(estadoCielo.getPeriodo()).setSkyStatusCode((estadoCielo.getCode()));
                 }
             }
             for (Map.Entry<AemetPeriodo, Integer> e : prediccion.getProbPrecipitacion().entrySet()) {
-                if (e.getKey() == AemetPeriodo.p0012) {
-                    morning.setRain(e.getValue());
-                } else if (e.getKey() == AemetPeriodo.p1224) {
-                    afternoon.setRain(e.getValue());
+                if (e.getKey().level() == level) {
+                    periods.get(e.getKey()).setRain(e.getValue());
                 }
             }
             for (AemetViento g : prediccion.getViento()) {
-                if (g.getPeriodo() == AemetPeriodo.p0012) {
-                    morning.setWind(new SimpleForecast.SimpleWind(g.getDireccion(), g.getVelocidad()));
-                } else if (g.getPeriodo() == AemetPeriodo.p1224) {
-                    afternoon.setWind(new SimpleForecast.SimpleWind(g.getDireccion(), g.getVelocidad()));
+                if (g.getPeriodo().level() == level && periods.containsKey(g.getPeriodo())) {
+                    periods.get(g.getPeriodo()).setWind(new FullForecast.SimpleWind(g.getDireccion(), g.getVelocidad()));
                 }
             }
 
-            if (morning.getSkyStatusCode() != null) {
-                day.setMorning(morning);
-            }
-            day.setAfternoon(afternoon);
-            if (day.getAfternoon().getSkyStatusCode() != null) {
-                days.add(day);
-            }
-//            day.setMorningRain(prediccion.getProbPrecipitacion());
+            day.setPeriods(new ArrayList<FullForecast.Period>());
+            day.getPeriods().addAll(periods.values());
+
+            days.add(day);
         }
         forecast.setDays(days);
         return forecast;
