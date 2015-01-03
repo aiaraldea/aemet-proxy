@@ -11,6 +11,8 @@ import com.aiaraldea.aemetproxy.dto.SimpleForecast;
 import com.aiaraldea.aemetproxy.dto.SimpleForecastBuilder;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
@@ -87,6 +89,7 @@ public class EguraldiaResource {
     }
 
     private SimpleForecast getSimple(int code) {
+        incrementCounter(code);
         String stringCode = Integer.toString(code);
         SimpleForecast predicciones = (SimpleForecast) servletContext.getAttribute("sf_" + stringCode);
         if (predicciones == null || predicciones.isOld()) {
@@ -99,5 +102,17 @@ public class EguraldiaResource {
             servletContext.setAttribute("sf_" + stringCode, predicciones);
         }
         return predicciones;
+    }
+
+    private void incrementCounter(int code) {
+        Map<Integer, Integer> counter = (Map<Integer, Integer>) servletContext.getAttribute("counter");
+        if (counter == null) {
+            counter = new HashMap<>();
+            servletContext.setAttribute("counter", counter);
+        }
+        if (!counter.containsKey(code)) {
+            counter.put(code, 0);
+        }
+        counter.put(code, counter.get(code) + 1);
     }
 }

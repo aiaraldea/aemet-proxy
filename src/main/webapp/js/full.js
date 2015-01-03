@@ -19,7 +19,7 @@ aemetProxy.full = (function () {
     period2(element, day.afternoon, '12-24');
   };
   var period1 = function (element, period, time) {
-    console.log(period);
+    console.log(period);  
     element.append('<div class="aemet-period">' +
             '<div class="ordua">' + time + '</div>' +
             '<i class="wi wi-' + period.skyStatusCode + '"></i>' +
