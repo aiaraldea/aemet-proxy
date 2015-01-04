@@ -52,7 +52,7 @@
 .wi-12:before, .wi-17:before {
     content: "\f00c";
 }
-.wi-11:before {
+.wi-11:before, .wi-11n:before {
     content: "\f00d";
 }
 .wi-61:before,.wi-62:before, .wi-day-storm-showers:before {

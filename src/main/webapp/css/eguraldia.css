@@ -17,6 +17,9 @@
     text-align:center;
     float:left;
 }
+.aemet-eguraldia.full .aemet-day {
+    width: auto;
+}
 .aemet-eguraldia .eguna {
     color: white;
     font-weight: bold;
@@ -36,6 +39,12 @@
 .aemet-eguraldia .aemet-period {
     width:50%; float:left;
 }
+.aemet-eguraldia .aemet-day.periods-4 .aemet-period {
+    width:25%; float:left;
+}
+.aemet-eguraldia .aemet-day.periods-1 .aemet-period {
+    width:100%; float:left;
+}
 .aemet-eguraldia .full .aemet-period {
     width:100%; float:left;
 }
@@ -48,6 +57,7 @@
 .aemet-eguraldia .temp {
     font-size: 140%;
     font-weight: bold;
+    clear: both;
 }
 .aemet-eguraldia .wind,
 .aemet-eguraldia .wind .wi {

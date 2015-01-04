@@ -1,6 +1,7 @@
 package com.aiaraldea.aemetproxy.dto;
 
 import com.aiaraldea.aemetproxy.BasqueSimpleDateFormat;
+import com.aiaraldea.aemetproxy.model.AemetPeriodo;
 import java.beans.Transient;
 import java.util.Date;
 import java.util.List;
@@ -84,9 +85,25 @@ public class FullForecast {
 
     public static class Period {
 
+        private AemetPeriodo periodo;
         private SimpleWind wind;
         private int rain;
         private String skyStatusCode;
+
+        public Period() {
+        }
+
+        Period(AemetPeriodo periodo) {
+            this.periodo = periodo;
+        }
+
+        public AemetPeriodo getPeriodo() {
+            return periodo;
+        }
+
+        public void setPeriodo(AemetPeriodo periodo) {
+            this.periodo = periodo;
+        }
 
         /**
          * @return the wind

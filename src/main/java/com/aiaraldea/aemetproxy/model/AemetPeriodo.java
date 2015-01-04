@@ -1,14 +1,20 @@
 package com.aiaraldea.aemetproxy.model;
 
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType(name = "periodo")
+@XmlEnum
 public enum AemetPeriodo {
 
-    p0024(DetailLevel.day),
-    p0012(DetailLevel.halfday),
-    p1224(DetailLevel.halfday),
-    p0006(DetailLevel.quarterday),
-    p0612(DetailLevel.quarterday),
-    p1218(DetailLevel.quarterday),
-    p1824(DetailLevel.quarterday);
+    @XmlEnumValue("00-24") p0024(DetailLevel.day),
+    @XmlEnumValue("00-12") p0012(DetailLevel.halfday),
+    @XmlEnumValue("12-24") p1224(DetailLevel.halfday),
+    @XmlEnumValue("00-06") p0006(DetailLevel.quarterday),
+    @XmlEnumValue("06-12") p0612(DetailLevel.quarterday),
+    @XmlEnumValue("12-18") p1218(DetailLevel.quarterday),
+    @XmlEnumValue("18-24") p1824(DetailLevel.quarterday);
     private final DetailLevel detailLevel;
 
     private AemetPeriodo(DetailLevel detailLevel) {

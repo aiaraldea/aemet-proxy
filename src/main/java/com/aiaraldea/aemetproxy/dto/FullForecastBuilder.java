@@ -32,7 +32,7 @@ public class FullForecastBuilder {
             Map<AemetPeriodo, FullForecast.Period> periods = new HashMap<>();
             for (AemetEstadoCielo estadoCielo : prediccion.getEstadoCielo()) {
                 if (estadoCielo.getPeriodo().level() == level) {
-                    periods.put(estadoCielo.getPeriodo(), new FullForecast.Period());
+                    periods.put(estadoCielo.getPeriodo(), new FullForecast.Period(estadoCielo.getPeriodo()));
                     periods.get(estadoCielo.getPeriodo()).setSkyStatusCode((estadoCielo.getCode()));
                 }
             }
