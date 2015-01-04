@@ -3,6 +3,11 @@
     margin: 0;
     width: 300px;
 }
+.aemet-widget.full {
+    font-family: sans-serif;
+    margin: 0;
+    width: 960px;
+}
 .aemet-widget > .town-chooser {
     float: right;
 }
@@ -58,6 +63,9 @@
     font-size: 140%;
     font-weight: bold;
     clear: both;
+}
+.aemet-eguraldia .wind{
+    min-width: 40px;
 }
 .aemet-eguraldia .wind,
 .aemet-eguraldia .wind .wi {

@@ -37,9 +37,24 @@ aemetProxy.full = (function () {
   return {"initData": initData};
 }());
 aemetProxy.full.init = function () {
+  
+  function getUrlParameter(sParam)
+  {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++)
+    {
+      var sParameterName = sURLVariables[i].split('=');
+      if (sParameterName[0] == sParam)
+      {
+        return sParameterName[1];
+      }
+    }
+  }
+  
   $('.aemet-eguraldia.full').each(function (i) {
     var container = $(this);
-    var code = container.data('aemet-code');
+    var code = getUrlParameter('aemet-code');
     $.get("/AemetProxy/webresources/eguraldia/" + code + ".json", function (data) {
       aemetProxy.full.initData(data, container);
     });
