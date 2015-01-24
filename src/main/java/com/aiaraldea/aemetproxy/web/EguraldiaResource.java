@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.aiaraldea.aemetproxy.web;
 
 import com.aiaraldea.aemetproxy.InfoAemet;
 import com.aiaraldea.aemetproxy.dto.FullForecast;
 import com.aiaraldea.aemetproxy.dto.FullForecastBuilder;
-import com.aiaraldea.aemetproxy.model.PrediccionesAemet;
 import com.aiaraldea.aemetproxy.dto.SimpleForecast;
 import com.aiaraldea.aemetproxy.dto.SimpleForecastBuilder;
 import java.io.IOException;
@@ -51,6 +45,7 @@ public class EguraldiaResource {
     @GET
     @Produces("application/json")
     @Path("{param}.json")
+    @Cacheable(cc = "public, maxAge=3600")
     public FullForecast getJson(@PathParam("param") int code) {
         return getFull(code);
     }
@@ -86,6 +81,7 @@ public class EguraldiaResource {
     @GET
     @Produces("application/json")
     @Path("sinple/{param}.json")
+    @Cacheable(cc = "public, max-age=1800")
     public SimpleForecast getSimpleJson(@PathParam("param") int code) {
         return getSimple(code);
     }
