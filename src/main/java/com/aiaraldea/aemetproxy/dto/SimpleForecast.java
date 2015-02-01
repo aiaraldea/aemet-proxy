@@ -146,7 +146,7 @@ public class SimpleForecast {
 
         private Date day;
         private int minTemperature;
-        private int maxTemperature;
+        private Integer maxTemperature;
         private Period morning;
         private Period afternoon;
 
@@ -185,14 +185,14 @@ public class SimpleForecast {
          * @return the maxTemperature
          */
         @XmlAttribute
-        public int getMaxTemperature() {
+        public Integer getMaxTemperature() {
             return maxTemperature;
         }
 
         /**
          * @param maxTemperature the maxTemperature to set
          */
-        public void setMaxTemperature(int maxTemperature) {
+        public void setMaxTemperature(Integer maxTemperature) {
             this.maxTemperature = maxTemperature;
         }
 

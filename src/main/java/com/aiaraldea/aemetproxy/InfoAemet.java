@@ -318,8 +318,10 @@ public class InfoAemet {
         log.debug("-init-");
         if (xpp != null && xpp.getEventType() == XmlPullParser.START_TAG) {
             xpp.next();
-            String maxima = xpp.getText();
-            prediccion.setMaxTemperatura(Integer.valueOf(maxima));
+            if (xpp.getEventType() != XmlPullParser.END_TAG) {
+                String maxima = xpp.getText();
+                prediccion.setMaxTemperatura(Integer.valueOf(maxima));
+            }
         }
         return prediccion;
     }

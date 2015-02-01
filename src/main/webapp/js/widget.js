@@ -12,7 +12,7 @@ aemetProxy.day = function (container, day) {
   }
   aemetProxy.period1(element, day.afternoon, '12-24');
   element.append(
-          '<div class="temp"><span class="min">' + day.minTemperature + '</span> / <span class="max">' + day.maxTemperature + '</span></div>');
+          '<div class="temp"><span class="min">' + day.minTemperature + '</span> / <span class="max">' + (day.maxTemperature||'') + '</span></div>');
   if (day.morning) {
     aemetProxy.period2(element, day.morning, '00-12');
   }
