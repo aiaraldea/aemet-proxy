@@ -37,13 +37,13 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.wi-13:before, .wi-14:before {
+.wi-13:before, .wi-14:before, .wi-13n:before, .wi-14n:before {
     content: "\f002";
 }
 .wi-23:before, .wi-23n:before, .wi-24:before, .wi-24n:before, .wi-day-rain:before {
     content: "\f008";
 }
-.wi-43:before,.wi-44:before, .wi-day-showers:before {
+.wi-43:before,.wi-44:before, .wi-43n:before,.wi-44n:before, .wi-day-showers:before {
     content: "\f009";
 }
 .wi-71:before,.wi-72:before, .wi-33:before,.wi-34:before, .wi-day-snow:before {

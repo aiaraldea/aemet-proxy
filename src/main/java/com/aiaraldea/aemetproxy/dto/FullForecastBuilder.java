@@ -41,6 +41,9 @@ public class FullForecastBuilder {
                     periods.get(e.getKey()).setRain(e.getValue());
                 }
             }
+            for (Object ç : prediccion.getHoraTemperatura().entrySet()) {
+                // Map the temperatures
+            }
             for (AemetViento g : prediccion.getViento()) {
                 if (g.getPeriodo().level() == level && periods.containsKey(g.getPeriodo())) {
                     periods.get(g.getPeriodo()).setWind(new FullForecast.SimpleWind(g.getDireccion(), g.getVelocidad()));

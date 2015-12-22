@@ -114,3 +114,30 @@ ul.town-chooser-list li{
     background-color: #CCCC00;
     color: #2D3C01;
 }
+
+.aemet-widget.full table {
+    width: 100%;
+    margin-bottom: 10px;
+    border-bottom: solid 2px #2D3C01;
+    text-align: center;
+    border-collapse: separate;
+}
+.aemet-widget.full td.eguna {
+    width: 25%;
+    background-color: white;
+    color: #2D3C01;
+    vertical-align: top;
+    font-size: 125%;
+}
+.aemet-widget.full td.eguna div.eguna {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.aemet-widget.full td.ordua {
+    width: 15%;
+    text-align: center;
+}
+.aemet-widget.full td {
+    width: 20%;
+    text-align: center;
+}

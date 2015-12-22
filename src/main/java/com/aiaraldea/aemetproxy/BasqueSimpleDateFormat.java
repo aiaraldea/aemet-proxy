@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class BasqueSimpleDateFormat {
 
-    private static final String[] days = {"iga", "asl", "asr", "asz", "osg", "osr", "lar"};
+    private static final String[] days = {"igandea", "astelehena", "asteartea", "asteazkena", "osteguna", "ostirala", "larunbata"};
 
     public static String format(Date date) {
         Calendar cal = Calendar.getInstance();

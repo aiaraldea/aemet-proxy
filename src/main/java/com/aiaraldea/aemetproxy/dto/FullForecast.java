@@ -86,6 +86,8 @@ public class FullForecast {
     public static class Period {
 
         private AemetPeriodo periodo;
+        private int temperature;
+        private int maxTemperature;
         private SimpleWind wind;
         private int rain;
         private String skyStatusCode;
@@ -104,6 +106,15 @@ public class FullForecast {
         public void setPeriodo(AemetPeriodo periodo) {
             this.periodo = periodo;
         }
+
+        public int getTemperature() {
+            return temperature;
+        }
+
+        public void setTemperature(int minTemperature) {
+            this.temperature = minTemperature;
+        }
+
 
         /**
          * @return the wind
