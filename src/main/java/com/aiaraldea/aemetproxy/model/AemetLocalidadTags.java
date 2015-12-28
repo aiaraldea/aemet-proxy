@@ -12,6 +12,7 @@ public enum AemetLocalidadTags {
 	tag_dia,
 	param_fecha,
 	tag_prob_precipitacion,
+	tag_cota_nieve_prov,
 	param_periodo,
 	tag_estado_cielo,
 	param_descripcion,

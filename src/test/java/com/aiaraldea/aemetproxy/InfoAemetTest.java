@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.aiaraldea.aemetproxy;
 
 import com.aiaraldea.aemetproxy.model.PrediccionAemet;
 import com.aiaraldea.aemetproxy.model.PrediccionesAemet;
-import java.util.Date;
-import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -47,7 +40,7 @@ public class InfoAemetTest {
     @Test
     public void testGetPrediccion() throws Exception {
         System.out.println("getPrediccion");
-        Integer aemetCode = 48082;
+        Integer aemetCode = 44050;
         InfoAemet instance = new InfoAemet();
         PrediccionesAemet result = instance.getPrediccion(aemetCode);
         assertNotNull(result);

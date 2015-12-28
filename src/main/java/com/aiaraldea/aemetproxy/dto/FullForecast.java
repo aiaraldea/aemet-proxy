@@ -90,6 +90,7 @@ public class FullForecast {
         private int maxTemperature;
         private SimpleWind wind;
         private int rain;
+        private int snow;
         private String skyStatusCode;
 
         public Period() {
@@ -143,6 +144,21 @@ public class FullForecast {
          */
         public void setRain(int rain) {
             this.rain = rain;
+        }
+
+        /**
+         * @return the rain
+         */
+        @XmlAttribute
+        public int getSnow() {
+            return snow;
+        }
+
+        /**
+         * @param rain the rain to set
+         */
+        public void setSnow(int snow) {
+            this.snow = snow;
         }
 
         /**

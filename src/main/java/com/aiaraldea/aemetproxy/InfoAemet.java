@@ -176,6 +176,9 @@ public class InfoAemet {
                     case tag_prob_precipitacion:
                         prediccion = addProbPrecipitacion(prediccion, xpp);
                         break;
+                    case tag_cota_nieve_prov:
+                        prediccion = addCotaNieve(prediccion, xpp);
+                        break;
                     case tag_racha_max:
                         prediccion = addRachaMax(prediccion, xpp);
                         break;
@@ -232,6 +235,25 @@ public class InfoAemet {
             if (xpp.getEventType() != XmlPullParser.END_TAG) {
                 Integer prob = Integer.valueOf(xpp.getText());
                 prediccion.getProbPrecipitacion().put(periodo, prob);
+                xpp.next();// colocamos en tag de cierre
+            }
+        }
+        return prediccion;
+    }
+
+    // <cota_nieve_prov periodo="18-24">2000</cota_nieve_prov>
+    private static PrediccionAemet addCotaNieve(PrediccionAemet prediccion,
+            XmlPullParser xpp) throws XmlPullParserException, IOException {
+        AemetLocalidadTags tag = AemetLocalidadTags.get(xpp.getName());
+        int eventType = xpp.getEventType();
+        if (AemetLocalidadTags.tag_cota_nieve_prov.equals(tag)
+                && eventType == XmlPullParser.START_TAG) {
+            AemetPeriodo periodo = AemetPeriodo.getPeriodo(getAttributeValue(
+                    xpp, AemetLocalidadTags.param_periodo.getValue()));
+            xpp.next();
+            if (xpp.getEventType() != XmlPullParser.END_TAG) {
+                Integer prob = Integer.valueOf(xpp.getText());
+                prediccion.getCotaNieve().put(periodo, prob);
                 xpp.next();// colocamos en tag de cierre
             }
         }

@@ -14,6 +14,7 @@ public class PrediccionAemet {
     private String prediccion;
     private Date dia;
     private Map<AemetPeriodo, Integer> probPrecipitacion;
+    private Map<AemetPeriodo, Integer> cotaNieve;
     private List<AemetEstadoCielo> estadoCielo;
     private List<AemetViento> viento;
     private Map<AemetPeriodo, Integer> rachaMax;
@@ -96,6 +97,13 @@ public class PrediccionAemet {
             probPrecipitacion = new HashMap<AemetPeriodo, Integer>();
         }
         return probPrecipitacion;
+    }
+
+    public Map<AemetPeriodo, Integer> getCotaNieve() {
+        if (cotaNieve == null) {
+            cotaNieve = new HashMap<AemetPeriodo, Integer>();
+        }
+        return cotaNieve;
     }
 
     /**

@@ -41,6 +41,11 @@ public class FullForecastBuilder {
                     periods.get(e.getKey()).setRain(e.getValue());
                 }
             }
+            for (Map.Entry<AemetPeriodo, Integer> e : prediccion.getCotaNieve().entrySet()) {
+                if (e.getKey().level() == level) {
+                    periods.get(e.getKey()).setSnow(e.getValue());
+                }
+            }
             for (Object ç : prediccion.getHoraTemperatura().entrySet()) {
                 // Map the temperatures
             }
